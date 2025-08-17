@@ -344,7 +344,7 @@ const Index = () => {
   );
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-900">
+    <div className="min-h-screen bg-slate-800 dark:bg-slate-900">
       <div className="container mx-auto px-4 py-8">
         {/* Header */}
         <div className="text-center mb-12">
@@ -352,18 +352,18 @@ const Index = () => {
             <div className="w-12 h-12 rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center">
               <Database className="h-6 w-6 text-white" />
             </div>
-            <h1 className="text-5xl font-bold text-slate-800 dark:text-slate-100">
+            <h1 className="text-5xl font-bold text-white">
               Tools for Data Scientists & Analysts
             </h1>
           </div>
-          <p className="text-xl text-gray-700 max-w-3xl mx-auto mb-8">
+          <p className="text-xl text-slate-300 max-w-3xl mx-auto mb-8">
             Your comprehensive toolkit for data analysis, visualization, and transformation. 
             Streamline your workflow with powerful tools designed specifically for data professionals.
           </p>
           
           <div className="flex flex-wrap justify-center gap-3 mb-8">
-            {['CSV', 'JSON', 'SQL', 'Python', 'Excel', 'Parquet', 'R', 'Jupyter'].map((format) => (
-              <Badge key={format} variant="secondary" className="text-sm bg-blue-100 text-blue-700 border-blue-200">
+            {['CSV', 'JSON', 'SQL', 'Python', 'Excel', 'Parquet', 'R', 'Jupyter', 'Power BI', 'Tableau'].map((format) => (
+              <Badge key={format} variant="secondary" className="text-sm bg-blue-600/20 text-blue-300 border-blue-500/30">
                 {format}
               </Badge>
             ))}

@@ -13,7 +13,10 @@ export type FileFormat =
   | 'markdown'
   | 'txt'
   | 'html'
-  | 'pdf';
+  | 'pdf'
+  | 'pbix'
+  | 'tbwx'
+  | 'notebook';
 
 export interface ConversionOption {
   from: FileFormat;
@@ -38,5 +41,5 @@ export interface FormatInfo {
   extensions: string[];
   description: string;
   icon: string;
-  category: 'data' | 'code' | 'markup' | 'document';
+  category: 'data' | 'code' | 'markup' | 'document' | 'visualization';
 }

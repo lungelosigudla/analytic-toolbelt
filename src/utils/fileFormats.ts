@@ -120,6 +120,30 @@ export const FILE_FORMATS: Record<FileFormat, FormatInfo> = {
     description: 'Portable Document Format',
     icon: '📄',
     category: 'document'
+  },
+  pbix: {
+    format: 'pbix',
+    name: 'Power BI',
+    extensions: ['.pbix'],
+    description: 'Microsoft Power BI file',
+    icon: '📊',
+    category: 'visualization'
+  },
+  tbwx: {
+    format: 'tbwx',
+    name: 'Tableau Workbook',
+    extensions: ['.twbx', '.twb'],
+    description: 'Tableau workbook file',
+    icon: '📈',
+    category: 'visualization'
+  },
+  notebook: {
+    format: 'notebook',
+    name: 'Generic Notebook',
+    extensions: ['.nb', '.notebook'],
+    description: 'Generic notebook format',
+    icon: '📔',
+    category: 'code'
   }
 };
 
@@ -138,21 +162,24 @@ export const getFormatFromExtension = (filename: string): FileFormat | null => {
 export const getSupportedConversions = (sourceFormat: FileFormat): FileFormat[] => {
   // Define conversion matrix
   const conversions: Record<FileFormat, FileFormat[]> = {
-    csv: ['json', 'excel', 'sql', 'python', 'tsv', 'yaml', 'xml', 'markdown'],
-    json: ['csv', 'excel', 'python', 'yaml', 'xml', 'sql', 'markdown'],
+    csv: ['json', 'excel', 'sql', 'python', 'tsv', 'yaml', 'xml', 'markdown', 'pbix'],
+    json: ['csv', 'excel', 'python', 'yaml', 'xml', 'sql', 'markdown', 'pbix'],
     sql: ['python', 'csv', 'json', 'markdown', 'txt'],
-    python: ['jupyter', 'sql', 'markdown', 'txt'],
-    excel: ['csv', 'json', 'python', 'tsv', 'yaml'],
-    parquet: ['csv', 'json', 'python', 'excel'],
+    python: ['jupyter', 'sql', 'markdown', 'txt', 'notebook'],
+    excel: ['csv', 'json', 'python', 'tsv', 'yaml', 'pbix'],
+    parquet: ['csv', 'json', 'python', 'excel', 'pbix'],
     yaml: ['json', 'xml', 'python', 'markdown'],
     xml: ['json', 'yaml', 'csv', 'python', 'markdown'],
     tsv: ['csv', 'json', 'excel', 'python', 'yaml'],
-    jupyter: ['python', 'markdown', 'html'],
+    jupyter: ['python', 'markdown', 'html', 'notebook'],
     r: ['python', 'csv', 'markdown', 'txt'],
     markdown: ['html', 'txt', 'pdf'],
     txt: ['markdown', 'python', 'sql', 'yaml'],
     html: ['markdown', 'txt', 'pdf'],
-    pdf: ['txt', 'markdown']
+    pdf: ['txt', 'markdown'],
+    pbix: ['python', 'csv', 'json', 'excel', 'tbwx'],
+    tbwx: ['python', 'csv', 'json', 'excel', 'pbix'],
+    notebook: ['python', 'jupyter', 'markdown']
   };
 
   return conversions[sourceFormat] || [];
