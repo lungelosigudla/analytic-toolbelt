@@ -10,7 +10,9 @@ const queryClient = new QueryClient();
 // Ensure correct routing under GitHub Pages subpath
 const basename = import.meta.env.BASE_URL.replace(/\/$/, '');
 
-const App = () => (
+const App = () => {
+console.log('App component rendering...');
+return (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
@@ -25,5 +27,6 @@ const App = () => (
     </TooltipProvider>
   </QueryClientProvider>
 );
+};
 
 export default App;
