@@ -7,12 +7,10 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
-// Ensure correct routing under GitHub Pages subpath
-const basename = import.meta.env.BASE_URL.replace(/\/$/, '');
+// Use basename only for GitHub Pages, not in development/preview
+const basename = import.meta.env.PROD && import.meta.env.BASE_URL !== '/' ? import.meta.env.BASE_URL.replace(/\/$/, '') : undefined;
 
-const App = () => {
-console.log('App component rendering...');
-return (
+const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
@@ -27,6 +25,5 @@ return (
     </TooltipProvider>
   </QueryClientProvider>
 );
-};
 
 export default App;
