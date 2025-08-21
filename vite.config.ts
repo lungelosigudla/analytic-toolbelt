@@ -5,7 +5,7 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: '/analytic-toolbelt/',
+  base: mode === 'production' ? '/analytic-toolbelt/' : '/',
   server: {
     host: "::",
     port: 8080,
